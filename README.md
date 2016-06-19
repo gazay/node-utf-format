@@ -1,5 +1,5 @@
 # node-utf-format
-## 🄵🄾🅁🄼🄰🅃 ᴛᴇxᴛ with utf-8 ｐｏｗｅｒ
+## Ⓕⓞⓡⓜⓐⓣ ᴛᴇxᴛ with utf-8 ｐｏｗｅｒ
 [![Build Status](https://travis-ci.org/gazay/node-utf-format.svg)](https://travis-ci.org/gazay/node-utf-format) [![NPM version](https://badge.fury.io/js/node-utf-format.svg)](https://www.npmjs.com/package/node-utf-format)
 
 If all you have to display your text is utf-8 range – use this package to display it almost as github markdown does
@@ -18,7 +18,7 @@ npm install node-utf-format
 
 This is compatible formatter, which uses utf-8 symbols till `ffff`:
 ```js
-const md = require('./index'); //node-utf-format');
+const md = require('node-utf-format');
 
 str = '[]Hello[], *my little friend 111*!\n' +
       'You ()can() have `monospace text and numbers 1 2 3 4`\n' +
