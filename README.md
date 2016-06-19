@@ -1,4 +1,4 @@
-# node-utf-format: 𝗙𝗼𝗿𝗺𝗮𝘁 your 𝚝𝚎𝚡𝚝 with utf-8 𝘱𝘰𝘸𝘦𝘳
+# node-utf-format: F̲r̲o̲m̲a̲t̲ your t⃨e⃨x⃨t⃨ with utf-8 ｐｏｗｅｒ
 [![Build Status](https://travis-ci.org/gazay/node-utf-format.svg)](https://travis-ci.org/gazay/node-utf-format) [![NPM version](https://badge.fury.io/js/node-utf-format.svg)](https://www.npmjs.com/package/node-utf-format)
 
 If all you have to display your text is utf-8 range – use this package to display it almost as github markdown does
@@ -15,6 +15,38 @@ npm install node-utf-format
 
 ## Usage
 
+This is compatible formatter, which uses utf-8 symbols till `ffff`:
+```js
+const md = require('node-utf-format');
+
+str = 'Hello, *my little friend 111*! You can have `monospace text and numbers 1 2 3 4`\n' +
+      'and you can have _italic text_';
+console.log(md.format(str));
+// Hello, m̲y l̲i̲t̲t̲l̲e̲ f̲r̲i̲e̲n̲d̲ 1̲1̲1̲! You can have ｆｕｌｌ  ｗｉｄｔｈ  ｔｅｘｔ  ａｎｄ  ｎｕｍｂｅｒｓ  １  ２  ３  ４
+// and you can have u⃨n⃨d⃨e⃨r⃨d⃨o⃨t⃨t⃨e⃨d⃨ ⃨t⃨e⃨x⃨t⃨
+
+console.log(md.format('String to be underlined', { to: 'cl' }));
+// S̲t̲r̲i̲n̲g t̲o̲ b̲e̲ u̲n̲d̲e̲r̲l̲i̲n̲e̲d̲
+
+console.log(md.format('String to be underdotted', { to: 'cu' }));
+// S⃨t⃨r⃨i⃨n⃨g⃨ ⃨t⃨o⃨ ⃨b⃨e⃨ ⃨u⃨n⃨d⃨e⃨r⃨d⃨o⃨t⃨t⃨e⃨d⃨
+
+console.log(md.format('String to be full width', { to: 'fw' }));
+// Ｓｔｒｉｎｇ  ｔｏ  ｂｅ  ｆｕｌｌ  ｗｉｄｔｈ
+
+
+// Those two are ugly as __
+
+console.log(md.format('String to be overlined', { to: 'co' }));
+// S̅tr̅in̅g̅ to̅ be̅ o̅v̅e̅r̅lin̅e̅d
+
+console.log(md.format('String to be over-low-lined', { to: 'col' }));
+// S̲̅t̲r̲̅i̲n̲̅g̅ t̲o̲̅ b̲e̲̅ o̲̅v̲̅e̲̅r̲̅-l̲o̲̅w̲̅-l̲i̲n̲̅e̲̅d̲
+```
+
+
+Those are from U+1D400, so as I see - they supported by mac and some of them - by linux
+by default.
 ```js
 const md = require('./index'); //node-utf-format');
 
