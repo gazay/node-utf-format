@@ -124,7 +124,7 @@ function formatAll(text, formatter) {
 
 function formatPart(part, type, symbolRegex, font) {
   const result = [];
-  if (font === 'ss') {
+  if (font === 'ss' && type !== 'm') {
     result.push(formatAll(part, AVAILABLE_TYPES.ss));
     result.push(formatAll(part.replace(symbolRegex, ''), AVAILABLE_TYPES[`ss${type}`]));
   } else {
