@@ -1,4 +1,5 @@
-# node-utf-format: 🄵🄾🅁🄼🄰🅃 ᴛᴇxᴛ with utf-8 ｐｏｗｅｒ
+# node-utf-format
+## 🄵🄾🅁🄼🄰🅃 ᴛᴇxᴛ with utf-8 ｐｏｗｅｒ
 [![Build Status](https://travis-ci.org/gazay/node-utf-format.svg)](https://travis-ci.org/gazay/node-utf-format) [![NPM version](https://badge.fury.io/js/node-utf-format.svg)](https://www.npmjs.com/package/node-utf-format)
 
 If all you have to display your text is utf-8 range – use this package to display it almost as github markdown does
