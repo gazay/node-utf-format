@@ -19,17 +19,22 @@ This is compatible formatter, which uses utf-8 symbols till `ffff`:
 ```js
 const md = require('./index'); //node-utf-format');
 
-str = 'Hello, *my little friend 111*! You can have `monospace text and numbers 1 2 3 4`\n' +
-      'and you can have _underdotted text_';
+str = '[]Hello[], *my little friend 111*!\n' +
+      'You ()can() have `monospace text and numbers 1 2 3 4`\n' +
+      'and you can have _capped text_';
 console.log(md.format(str));
-// Hello, 🄼🅈 🄻🄸🅃🅃🄻🄴 🄵🅁🄸🄴🄽🄳 111! You can have ｍｏｎｏｓｐａｃｅ  ｔｅｘｔ  ａｎｄ  ｎｕｍｂｅｒｓ  １  ２  ３  ４
-// and you can have ᴜɴᴅᴇʀᴅᴏᴛᴛᴇᴅ ᴛᴇxᴛ
+// 🄷🄴🄻🄻🄾, ᴍy ʟɪᴛᴛʟᴇ Fʀɪᴇɴᴅ 111!
+// You ⓒⓐⓝ have ｍｏｎｏｓｐａｃｅ  ｔｅｘｔ  ａｎｄ  ｎｕｍｂｅｒｓ  １  ２  ３  ４
+// and you can have ᴄᴀᴩᴩᴇᴅ ᴛᴇxᴛ
 
 console.log(md.format('String to be squared', { to: 'sq' }));
 // 🅂🅃🅁🄸🄽🄶 🅃🄾 🄱🄴 🅂🅀🅄🄰🅁🄴🄳
 
+console.log(md.format('String to be circled', { to: 'ci' }));
+// Ⓢⓣⓡⓘⓝⓖ ⓣⓞ ⓑⓔ ⓒⓘⓡⓒⓛⓔⓓ
+
 console.log(md.format('String to be small capped', { to: 'sc' }));
-// Sᴛʀɪɴɢ ᴛᴏ ʙᴇ Sᴍᴀʟʟ ᴄᴀᴩᴩᴇᴅ
+// sᴛʀɪɴɢ ᴛᴏ ʙᴇ sᴍᴀʟʟ ᴄᴀᴩᴩᴇᴅ
 
 console.log(md.format('String to be full width', { to: 'fw' }));
 // Ｓｔｒｉｎｇ  ｔｏ  ｂｅ  ｆｕｌｌ  ｗｉｄｔｈ
@@ -37,7 +42,7 @@ console.log(md.format('String to be full width', { to: 'fw' }));
 
 It seems that github code block doesn't show Small caps properly, here it is without code formatting:
 
-  Sᴛʀɪɴɢ ᴛᴏ ʙᴇ Sᴍᴀʟʟ ᴄᴀᴩᴩᴇᴅ
+  sᴛʀɪɴɢ ᴛᴏ ʙᴇ sᴍᴀʟʟ ᴄᴀᴩᴩᴇᴅ
 
 
 Those are from U+1D400, so as I see - they supported by mac and some of them - by linux
