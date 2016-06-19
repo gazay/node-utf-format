@@ -35,6 +35,10 @@ console.log(md.format('String to be full width', { to: 'fw' }));
 // Ｓｔｒｉｎｇ  ｔｏ  ｂｅ  ｆｕｌｌ  ｗｉｄｔｈ
 ```
 
+It seems that github code block doesn't show Small caps properly, here it is without code formatting:
+
+  Sᴛʀɪɴɢ ᴛᴏ ʙᴇ Sᴍᴀʟʟ ᴄᴀᴩᴩᴇᴅ
+
 
 Those are from U+1D400, so as I see - they supported by mac and some of them - by linux
 by default.
