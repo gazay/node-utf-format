@@ -203,7 +203,7 @@ function markdownParser(text, font) {
   }
   let mono = text.match(/(`[^`]+`)|(```[^`]+```)/g);
   if (mono) {
-    mono = mono.map(m => formatPart(m, 'rg', /`/g, font));
+    mono = mono.map(m => formatPart(m, 'm', /`/g, font));
   }
   let italic = text.match(/(_[^_]+_)/g);
   if (italic) {
@@ -238,11 +238,11 @@ function markdownCompatibleParser(text) {
   }
   let ul = text.match(/(_[^_]+_)/g);
   if (ul) {
-    ul = ul.map(u => formatPart(u, 'rg', /_/g));
+    ul = ul.map(u => formatPart(u, 'sc', /_/g));
   }
   let mono = text.match(/(`[^`]+`)|(```[^`]+```)/g);
   if (mono) {
-    mono = mono.map(m => formatPart(m, 'fw', /`/g));
+    mono = mono.map(m => formatPart(m, 'rg', /`/g));
   }
   let squared = text.match(/(\[\][^\[]+\[\])/g);
   if (squared) {
