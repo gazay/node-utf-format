@@ -150,7 +150,17 @@ const SMALL_CAPS = {
   u: 'ᴜ', v: 'ᴠ', w: 'ᴡ', x: 'x', y: 'y', z: 'ᴢ',
 };
 
+const REGIONAL = {
+  A: '🇦​', B: '🇧​', C: '🇨​', D: '🇩​', E: '🇪​', F: '🇫​', G: '🇬​', H: '🇭​', I: '🇮​', J: '🇯​',
+  K: '🇰​', L: '🇱​', M: '🇲​', N: '🇳​', O: '🇴​', P: '🇵​', Q: '🇶​', R: '🇷​', S: '🇸​', T: '🇹​',
+  U: '🇺​', V: '🇻​', W: '🇼​', X: '🇽​', Y: '🇾​', Z: '🇿​',
+  a: '🇦​', b: '🇧​', c: '🇨​', d: '🇩​', e: '🇪​', f: '🇫​', g: '🇬​', h: '🇭​', i: '🇮​', j: '🇯​',
+  k: '🇰​', l: '🇱​', m: '🇲​', n: '🇳​', o: '🇴​', p: '🇵​', q: '🇶​', r: '🇷​', s: '🇸​', t: '🇹​',
+  u: '🇺​', v: '🇻​', w: '🇼​', x: '🇽​', y: '🇾​', z: '🇿​',
+}
+
 const AVAILABLE_TYPES = {
+  // Supported only on mac as I know
   b: BOLD,
   i: ITALIC,
   bi: BOLD_ITALIC,
@@ -160,14 +170,17 @@ const AVAILABLE_TYPES = {
   ssi: SS_ITALIC,
   ssbi: SS_BOLD_ITALIC,
   bs: BOLD_SCRIPT,
+  // Supported everywhere
   fw: FULL_WIDTH,
   sq: SQUARED,
   sc: SMALL_CAPS,
   ci: CIRCLED,
+  rg: REGIONAL,
 };
 
 function formatAll(text, formatter) {
-  return text.split('').map(ch => (formatter[ch] || ch)).join('');
+  const res = text.split('').map(ch => (formatter[ch] || ch));
+  return res.join(' ');
 }
 
 function formatPart(part, type, symbolRegex, font) {
@@ -190,7 +203,7 @@ function markdownParser(text, font) {
   }
   let mono = text.match(/(`[^`]+`)|(```[^`]+```)/g);
   if (mono) {
-    mono = mono.map(m => formatPart(m, 'm', /`/g, font));
+    mono = mono.map(m => formatPart(m, 'rg', /`/g, font));
   }
   let italic = text.match(/(_[^_]+_)/g);
   if (italic) {
@@ -219,9 +232,13 @@ function markdownParser(text, font) {
 
 function markdownCompatibleParser(text) {
   let result = text;
-  let bold = text.match(/(\*[^\*]+\*)|(_[^_]+_)/g);
+  let bold = text.match(/(\*[^\*]+\*)/g);
   if (bold) {
-    bold = bold.map(b => formatPart(b, 'sc', /\*|_/g));
+    bold = bold.map(b => formatPart(b, 'sc', /\*/g));
+  }
+  let ul = text.match(/(_[^_]+_)/g);
+  if (ul) {
+    ul = ul.map(u => formatPart(u, 'rg', /_/g));
   }
   let mono = text.match(/(`[^`]+`)|(```[^`]+```)/g);
   if (mono) {
@@ -237,6 +254,11 @@ function markdownCompatibleParser(text) {
   }
   if (bold) {
     bold.forEach(repl => {
+      result = result.replace(repl[0], repl[1]);
+    });
+  }
+  if (ul) {
+    ul.forEach(repl => {
       result = result.replace(repl[0], repl[1]);
     });
   }

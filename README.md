@@ -37,6 +37,9 @@ console.log(md.format('String to be circled', { to: 'ci' }));
 console.log(md.format('String to be small capped', { to: 'sc' }));
 // sᴛʀɪɴɢ ᴛᴏ ʙᴇ sᴍᴀʟʟ ᴄᴀᴩᴩᴇᴅ
 
+console.log(md.format('String to be small capped w underline', { to: 'scu' }));
+// s̲ᴛ̲ʀ̲ɪ̲ɴ̲ɢ̲ ᴛ̲ᴏ̲ ʙ̲ᴇ̲ s̲ᴍ̲ᴀ̲ʟ̲ʟ̲ ᴄ̲ᴀ̲ᴩ̲ᴩ̲ᴇ̲ᴅ̲ ᴡ̲ ᴜ̲ɴ̲ᴅ̲ᴇ̲ʀ̲ʟ̲ɪ̲ɴ̲ᴇ̲
+
 console.log(md.format('String to be full width', { to: 'fw' }));
 // Ｓｔｒｉｎｇ  ｔｏ  ｂｅ  ｆｕｌｌ  ｗｉｄｔｈ
 ```
