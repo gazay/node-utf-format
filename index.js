@@ -232,17 +232,13 @@ function markdownParser(text, font) {
 
 function markdownCompatibleParser(text) {
   let result = text;
-  let bold = text.match(/(\*[^\*]+\*)/g);
+  let bold = text.match(/(\*[^\*]+\*)|(_[^_]+_)|(`[^`]+`)|(```[^`]+```)/g);
   if (bold) {
-    bold = bold.map(b => formatPart(b, 'sc', /\*/g));
+    bold = bold.map(b => formatPart(b, 'sc', /\*|_|`/g));
   }
-  let ul = text.match(/(_[^_]+_)/g);
-  if (ul) {
-    ul = ul.map(u => formatPart(u, 'sc', /_/g));
-  }
-  let mono = text.match(/(`[^`]+`)|(```[^`]+```)/g);
-  if (mono) {
-    mono = mono.map(m => formatPart(m, 'rg', /`/g));
+  let reg = text.match(/(~[^~]+~)/g);
+  if (reg) {
+    reg = reg.map(r => formatPart(r, 'rg', /~/g));
   }
   let squared = text.match(/(\[\][^\[]+\[\])/g);
   if (squared) {
@@ -257,13 +253,8 @@ function markdownCompatibleParser(text) {
       result = result.replace(repl[0], repl[1]);
     });
   }
-  if (ul) {
-    ul.forEach(repl => {
-      result = result.replace(repl[0], repl[1]);
-    });
-  }
-  if (mono) {
-    mono.forEach(repl => {
+  if (reg) {
+    reg.forEach(repl => {
       result = result.replace(repl[0], repl[1]);
     });
   }
