@@ -180,7 +180,7 @@ const AVAILABLE_TYPES = {
 
 function formatAll(text, formatter) {
   const res = text.split('').map(ch => (formatter[ch] || ch));
-  return res.join(' ');
+  return res.join('');
 }
 
 function formatPart(part, type, symbolRegex, font) {
