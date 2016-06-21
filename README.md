@@ -56,11 +56,11 @@ const md = require('./index'); //node-utf-format');
 
 str = 'Hello, *my little friend 111*! You can have `monospace text and numbers 1 2 3 4`\n' +
       'and you can have _italic text_';
-console.log(md.format(str));
+console.log(md.format(str, { parser: 'md' }));
 // Hello, 𝐦𝐲 𝐥𝐢𝐭𝐭𝐥𝐞 𝐟𝐫𝐢𝐞𝐧𝐝 𝟏𝟏𝟏! You can have 𝚖𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎 𝚝𝚎𝚡𝚝 𝚊𝚗𝚍 𝚗𝚞𝚖𝚋𝚎𝚛𝚜 𝟷 𝟸 𝟹 𝟺
 // and you can have 𝑖𝑡𝑎𝑙𝑖𝑐 𝑡𝑒𝑥𝑡
 
-console.log(md.format(str, { font: 'ss' }));
+console.log(md.format(str, { font: 'ss', parser: 'md' }));
 // 𝖧𝖾𝗅𝗅𝗈, 𝗺𝘆 𝗹𝗶𝘁𝘁𝗹𝗲 𝗳𝗿𝗶𝗲𝗻𝗱 𝟭𝟭𝟭! 𝖸𝗈𝗎 𝖼𝖺𝗇 𝗁𝖺𝗏𝖾 𝚖𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎 𝚝𝚎𝚡𝚝 𝚊𝚗𝚍 𝚗𝚞𝚖𝚋𝚎𝚛𝚜 𝟷 𝟸 𝟹 𝟺
 // 𝖺𝗇𝖽 𝗒𝗈𝗎 𝖼𝖺𝗇 𝗁𝖺𝗏𝖾 𝘪𝘵𝘢𝘭𝘪𝘤 𝘵𝘦𝘹𝘵
 
